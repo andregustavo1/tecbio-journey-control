@@ -1,11 +1,9 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -21,21 +19,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobile) {
-      if (mobileMenuOpen) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    }
-    
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [mobileMenuOpen, isMobile]);
-
   const navLinks = [
     { name: 'Início', href: '#home' },
     { name: 'Sobre', href: '#about' },
@@ -50,7 +33,7 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
         scrolled 
-          ? 'backdrop-blur-xl bg-white/80 py-3' 
+          ? 'backdrop-blur-xl bg-white/80 py-5' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -63,9 +46,9 @@ const Header = () => {
           </h1>
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
-          {navLinks.map((link) => (
+        {/* Navigation - Visible on all screen sizes */}
+        <nav className="flex items-center space-x-8">
+          {!isMobile && navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
@@ -83,47 +66,6 @@ const Header = () => {
             Solicitar Demonstração
           </a>
         </nav>
-
-        {/* Mobile Menu Button */}
-        <button 
-          className="lg:hidden z-50"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
-        >
-          {mobileMenuOpen ? (
-            <X size={24} className="text-white" />
-          ) : (
-            <Menu size={24} className={scrolled ? 'text-tecbio-blue' : 'text-white'} />
-          )}
-        </button>
-
-        {/* Mobile Menu - Fixed position without overflow issues */}
-        <div 
-          className={`fixed inset-0 z-40 bg-tecbio-blue transform transition-transform duration-300 ease-in-out ${
-            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-          style={{ top: '0', height: '100%' }}
-        >
-          <div className="flex flex-col items-center justify-center h-full">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-white text-xl py-3 hover:text-tecbio-yellow transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-            <a 
-              href="#contact" 
-              className="btn btn-accent mt-6"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Solicitar Demonstração
-            </a>
-          </div>
-        </div>
       </div>
     </header>
   );
