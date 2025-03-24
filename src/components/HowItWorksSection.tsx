@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Search, Settings, Server, Lightbulb, PhoneCall } from 'lucide-react';
 
@@ -103,7 +102,7 @@ const HowItWorksSection = () => {
                       </div>
                       
                       {/* Step illustration */}
-                      <div className="h-40 flex items-center justify-center">
+                      <div className="h-40 flex items-center justify-end">
                         {index === 0 && (
                           <div className="w-full h-full bg-tecbio-light/50 rounded-lg flex items-center justify-center">
                             <div className="w-3/4 h-3/4 grid grid-cols-2 gap-3">
