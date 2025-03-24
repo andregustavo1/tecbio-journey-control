@@ -1,10 +1,12 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useIsMobile } from '../hooks/use-mobile';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,21 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobile) {
+      if (mobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen, isMobile]);
 
   const navLinks = [
     { name: 'Início', href: '#home' },
@@ -61,9 +78,7 @@ const Header = () => {
           ))}
           <a 
             href="#contact" 
-            className={`btn ${
-              scrolled ? 'btn-primary text-white' : 'glass-dark hover:bg-white/20 text-white'
-            }`}
+            className="btn btn-primary text-white"
           >
             Solicitar Demonstração
           </a>
@@ -73,18 +88,22 @@ const Header = () => {
         <button 
           className="lg:hidden z-50"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
           {mobileMenuOpen ? (
-            <X size={24} className={scrolled ? 'text-tecbio-blue' : 'text-white'} />
+            <X size={24} className="text-white" />
           ) : (
             <Menu size={24} className={scrolled ? 'text-tecbio-blue' : 'text-white'} />
           )}
         </button>
 
-        {/* Mobile Menu */}
-        <div className={`fixed inset-0 z-40 bg-tecbio-blue/95 backdrop-blur-xl transform transition-transform duration-300 ease-in-out ${
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}>
+        {/* Mobile Menu - Fixed position without overflow issues */}
+        <div 
+          className={`fixed inset-0 z-40 bg-tecbio-blue transform transition-transform duration-300 ease-in-out ${
+            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+          style={{ top: '0', height: '100%' }}
+        >
           <div className="flex flex-col items-center justify-center h-full">
             {navLinks.map((link) => (
               <a
