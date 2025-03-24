@@ -63,7 +63,7 @@ const Header = () => {
             href="#contact" 
             className="btn btn-primary text-white"
           >
-            Solicitar Demonstração
+            Contate-nos
           </a>
         </nav>
       </div>
