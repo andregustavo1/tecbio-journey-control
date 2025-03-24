@@ -33,7 +33,7 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
         scrolled 
-          ? 'glass py-3 shadow-lg' 
+          ? 'backdrop-blur-xl bg-white/80' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -62,7 +62,7 @@ const Header = () => {
           <a 
             href="#contact" 
             className={`btn ${
-              scrolled ? 'btn-primary' : 'glass-dark hover:bg-white/20'
+              scrolled ? 'btn-primary text-white' : 'glass-dark hover:bg-white/20 text-white'
             }`}
           >
             Solicitar Demonstração

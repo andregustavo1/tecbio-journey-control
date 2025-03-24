@@ -83,19 +83,19 @@ const HowItWorksSection = () => {
             {steps.map((step, index) => (
               <div 
                 key={index} 
-                className={`mb-16 md:mb-0 last:mb-0 relative reveal opacity-0 transition-all duration-500 ease-out`}
+                className={`mb-16 last:mb-0 relative reveal opacity-0 transition-all duration-500 ease-out`}
                 style={{ animationDelay: `${index * 200}ms` }}
               >
-                <div className={`md:grid md:grid-cols-2 gap-8 items-center ${index % 2 === 0 ? '' : 'md:direction-rtl md:flex-row-reverse'}`}>
-                  <div className={`text-center md:text-left ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
-                    <div className="bg-tecbio-blue p-1 w-12 h-12 rounded-full flex items-center justify-center mx-auto md:mx-0 mb-4">
+                <div className={`md:flex ${index % 2 === 1 ? 'md:flex-row-reverse' : ''} md:gap-8 items-center`}>
+                  <div className={`md:w-1/2 text-center ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                    <div className={`bg-tecbio-blue p-1 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${index % 2 === 0 ? 'md:mx-0' : 'md:ml-auto'}`}>
                       {step.icon}
                     </div>
                     <h3 className="text-xl font-medium text-tecbio-blue mb-3">{step.title}</h3>
                     <p className="text-tecbio-gray">{step.description}</p>
                   </div>
                   
-                  <div className={`hidden md:block ${index % 2 === 0 ? 'md:col-start-2' : ''}`}>
+                  <div className="hidden md:block md:w-1/2 mt-6 md:mt-0">
                     <div className="bg-white rounded-xl border border-tecbio-blue/10 p-6 shadow-lg relative">
                       {/* Step number */}
                       <div className="absolute -top-3 -left-3 w-10 h-10 bg-tecbio-yellow rounded-full flex items-center justify-center font-bold text-tecbio-blue">
@@ -240,7 +240,7 @@ const HowItWorksSection = () => {
                 </div>
                 
                 {/* Timeline dot */}
-                <div className="absolute top-0 left-1/2 w-6 h-6 bg-tecbio-blue rounded-full transform -translate-x-1/2 hidden md:block"></div>
+                <div className="absolute top-12 left-1/2 w-6 h-6 bg-tecbio-blue rounded-full transform -translate-x-1/2 hidden md:block"></div>
               </div>
             ))}
           </div>
