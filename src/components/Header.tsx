@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 
@@ -41,7 +42,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/5519dab1-7625-45b8-bd17-fff92f56d7b5.png" 
             alt="Tecbio Logo" 
-            className="h-13" /* Changed from h-15 to h-13 (slightly larger than original h-12) */
+            className="h-12"
           />
         </a>
 
