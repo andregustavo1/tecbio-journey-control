@@ -150,7 +150,7 @@ const ContactSection = () => {
 
                       <div className="pt-4 text-center">
                         <a
-                          href="https://wa.me/5583921409278?text=Olá,%20gostaria%20de%20conhecer%20as%20soluções%20da%20Tecbio%20Services"
+                          href="https://wa.me/5583921409278"
                           target="_blank"
                           rel="noreferrer"
                           className="btn btn-accent w-full"

@@ -48,7 +48,7 @@ const CtaSection = () => {
           </p>
           
           <a 
-            href="https://wa.me/5583921409278?text=Olá,%20gostaria%20de%20agendar%20uma%20demonstração%20das%20soluções%20da%20Tecbio%20Services"
+            href="https://wa.me/5583921409278"
             target="_blank"
             rel="noreferrer"
             className="btn btn-accent text-lg px-8 py-4 reveal opacity-0 group"

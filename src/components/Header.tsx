@@ -39,11 +39,11 @@ const Header = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#home" className="z-50">
-          <h1 className={`text-2xl font-poppins font-bold ${
-            scrolled ? 'text-tecbio-blue' : 'text-white'
-          }`}>
-            <span className="text-tecbio-yellow">Tec</span>bio
-          </h1>
+          <img 
+            src="/lovable-uploads/5519dab1-7625-45b8-bd17-fff92f56d7b5.png" 
+            alt="Tecbio Logo" 
+            className="h-12"
+          />
         </a>
 
         {/* Navigation - Visible on all screen sizes */}
@@ -60,7 +60,9 @@ const Header = () => {
             </a>
           ))}
           <a 
-            href="#contact" 
+            href="https://wa.me/5583921409278" 
+            target="_blank"
+            rel="noreferrer"
             className="btn btn-primary text-white"
           >
             Contate-nos
