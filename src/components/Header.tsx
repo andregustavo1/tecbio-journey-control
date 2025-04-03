@@ -42,7 +42,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/5519dab1-7625-45b8-bd17-fff92f56d7b5.png" 
             alt="Tecbio Logo" 
-            className="h-12"
+            className="w-40"
           />
         </a>
 
