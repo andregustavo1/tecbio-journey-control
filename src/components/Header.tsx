@@ -40,7 +40,7 @@ const Header = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#home" className="z-50">
           <img 
-            src="/lovable-uploads/5519dab1-7625-45b8-bd17-fff92f56d7b5.png" 
+            src="/lovable-uploads/f24be880-6641-417f-b499-ae9ebfc86317.png" 
             alt="Tecbio Logo" 
             className="w-40"
           />
